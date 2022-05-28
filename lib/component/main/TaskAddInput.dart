@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'dart:developer';
 
 class TaskAddInput extends StatefulWidget {
@@ -28,7 +28,7 @@ class TaskAddInputState extends State<TaskAddInput> {
       children: <Widget>[
         Expanded(
             child: Focus(
-              child: new TextField(
+              child: CupertinoTextField(
                 controller: _controller,
               ),
               onFocusChange: (hasFocus) {

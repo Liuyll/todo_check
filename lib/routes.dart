@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:task_check/page/plan/main.dart';
+import 'package:task_check/page/plan/plan.dart';
 
 typedef RouteBuilder = Widget Function(BuildContext ctx);
 Map<String, RouteBuilder> routes = {
-  '/planDetail': (context) => PlanDetailPage()
+  '/plan': (context) => PlanDetailPage()
 };

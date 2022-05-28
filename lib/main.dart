@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         navigationBar: CupertinoNavigationBar(
           middle: Text('Home'),
         ),
-        child:  new MainPage(),
+        child: new MainPage(),
       ),
       routes: routes,
     );

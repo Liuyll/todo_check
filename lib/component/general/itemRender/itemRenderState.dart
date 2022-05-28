@@ -38,11 +38,11 @@ class ItemRenderState extends State {
             itemBuilder: (context, index) {
               return Container(
                   margin: const EdgeInsets.only(left: 5, top: 5, right: 5),
-                  child: dataList[index]['extra'] == null ? DragItem(
-                      Text(dataList[index]['task']),
-                      clickHandler: () {
-                        Navigator.pushNamed(context, "/planDetail");
-                      },
+                  child: dataList[index]['extra'] == null ? GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, "/plan");
+                    },
+                    child: Text(dataList[index]['task']),
                   ) : Container(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
