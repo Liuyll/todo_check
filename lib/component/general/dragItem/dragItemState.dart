@@ -1,13 +1,14 @@
-import 'dart:developer';
-
+import 'dart:developer' as developer;
 import 'package:flutter/material.dart';
 
 class DragItemState extends State {
   double offset = 0;
   double startX = -1;
   Widget child;
+  void Function() clickHandler;
+  void Function() dragHandler;
 
-  DragItemState(this.child);
+  DragItemState(this.child, this.clickHandler, this.dragHandler);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,10 @@ class DragItemState extends State {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          child,
+          GestureDetector(
+            onTap: this.clickHandler,
+            child: child,
+          ),
           GestureDetector(
             onHorizontalDragStart: (DragStartDetails e) {
               startX = e.localPosition.dx;
@@ -24,7 +28,6 @@ class DragItemState extends State {
             onHorizontalDragUpdate: (DragUpdateDetails e) {
               var newOffset = startX - e.localPosition.dx;
               if(newOffset > 200) newOffset = 200;
-              log("update: " + newOffset.toString() + " offset:" + (200 - offset).toString());
 
               setState(() {
                 offset = newOffset;
@@ -34,6 +37,8 @@ class DragItemState extends State {
               setState(() {
                 offset = offset > 100 ? 200 : 0;
               });
+
+              this.dragHandler();
             },
 
             child: Container(

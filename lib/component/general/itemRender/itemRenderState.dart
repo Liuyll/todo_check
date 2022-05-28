@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task_check/component/general/dragItem/dragItem.dart';
 import 'package:task_check/component/main/TaskAddInput.dart';
+import 'dart:developer' as developer;
 
 class ItemRenderState extends State {
   List<Map> dataList = new List<Map>();
@@ -37,7 +38,12 @@ class ItemRenderState extends State {
             itemBuilder: (context, index) {
               return Container(
                   margin: const EdgeInsets.only(left: 5, top: 5, right: 5),
-                  child: dataList[index]['extra'] == null ? DragItem(Text(dataList[index]['task'])) : Container(
+                  child: dataList[index]['extra'] == null ? DragItem(
+                      Text(dataList[index]['task']),
+                      clickHandler: () {
+                        Navigator.pushNamed(context, "/planDetail");
+                      },
+                  ) : Container(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.stretch,

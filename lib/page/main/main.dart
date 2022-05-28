@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:task_check/page/main/main_state.dart';
 
 class MainPage extends StatefulWidget {

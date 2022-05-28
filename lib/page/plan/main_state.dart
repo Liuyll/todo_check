@@ -3,11 +3,11 @@ import 'package:task_check/component/main/TaskAddInput.dart';
 import 'package:task_check/page/plan/main.dart';
 import 'dart:developer';
 
-class MainPageState extends State<MainPage> {
+class PlanDetailPageState extends State<PlanDetailPage> {
   List<Map> data_list;
   bool _shouldShowInput = false;
 
-  MainPageState(): data_list = new List<Map>() {
+  PlanDetailPageState(): data_list = new List<Map>() {
     for(var i = 0; i < 10; i++) {
       final data_item = new Map();
       data_item['task'] = '和吴冬: ${i}约会';
@@ -32,8 +32,16 @@ class MainPageState extends State<MainPage> {
     });
   }
 
+  initDataFromPageInfo(Object _pageInfo) {
+    Map<String, String> pageInfo = (_pageInfo as Map<String, String>);
+    var id = pageInfo['planId'];
+  }
+
   @override
   Widget build(BuildContext context) {
+    var pageArgs = ModalRoute.of(context).settings.arguments;
+    initDataFromPageInfo(pageArgs);
+
     return Scaffold(
       body: new ListView.builder(
           itemCount: data_list.length,
